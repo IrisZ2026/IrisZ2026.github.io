@@ -1,0 +1,36 @@
+/* Overrides: font smoothing, spacing, micro-animations */
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+/* Hero spacing and polish */
+.hero { padding: 9.5rem 3rem 6rem; gap: 2.5rem; align-items: center; }
+.hero-name { letter-spacing: -0.02em; text-shadow: 0 10px 30px rgba(45,90,61,0.03); }
+.hero-tagline { font-size: 1.6rem; color: #4a7c5e; }
+
+/* Decorative letter float */
+.hero-deco { will-change: transform, opacity; animation: decoFloat 10s ease-in-out infinite; }
+@keyframes decoFloat { 0% { transform: translateY(-50%) translateX(0) rotate(0deg); opacity: 0.06; } 50% { transform: translateY(-54%) translateX(-6px) rotate(-0.6deg); opacity: 0.12; } 100% { transform: translateY(-48%) translateX(0) rotate(0.4deg); opacity: 0.06; } }
+
+/* Scroll text subtle bounce */
+.hero-scroll.visible { opacity: 1; transform: translateX(-50%) translateY(-4px); }
+.hero-scroll span { display: inline-block; animation: scrollText 1.6s ease-in-out infinite; }
+@keyframes scrollText { 0% { transform: translateY(0); } 50% { transform: translateY(-6px); } 100% { transform: translateY(0); } }
+
+/* Skills micro-interaction */
+.skill-tag { transition: transform 0.18s ease, box-shadow 0.18s ease; }
+.skill-tag:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 18px rgba(45,90,61,0.06); }
+
+/* Project title gradient */
+.project-title { background: linear-gradient(90deg, #2d5a3d, #4a7c5e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+/* Project card subtle entrance */
+.project-item { transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, opacity 0.22s ease; }
+.project-item.revealed { opacity: 1; transform: translateY(0); }
+
+/* Small nav tweaks */
+.nav-logo { font-weight: 700; }
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .hero-deco, .hero-scroll span, .project-item, .skill-tag { animation: none !important; transition: none !important; }
+}
